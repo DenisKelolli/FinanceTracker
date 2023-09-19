@@ -1,0 +1,35 @@
+.networth-container {
+    width: 200px;
+    height: 100px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    border: 2px solid black;
+}
+
+.networth-row {
+    display: flex;
+    align-items: center;
+}
+
+.networth-icon-left {
+    margin-left: 0;
+    /* Add additional styling or class for the icon on the left if needed */
+}
+
+.networth-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+
+.networth-title {
+    margin-left: 0;
+    font-weight: bold;
+}
+
+.networth-value {
+    margin-left: 0;
+    font-size: 24px;
+    font-weight: bold;
+}

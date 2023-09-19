@@ -1,0 +1,23 @@
+.sidebar-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 10px;
+    width: 10%;
+    height: 100vh;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #e1e1e1;
+}
+
+.sidebar-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-text {
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
