@@ -7,6 +7,7 @@ import {FaCreditCard} from "react-icons/fa"
 import {BiHomeAlt} from "react-icons/bi"
 import {FaRegMoneyBill1} from "react-icons/fa6"
 import {BsWallet2} from "react-icons/bs"
+import {GiPayMoney} from "react-icons/gi";
 
 const Sidebar = () => {
     return (
@@ -15,6 +16,8 @@ const Sidebar = () => {
             <Link className="sidebar-text" to="/">Dashboard</Link>
             <div className="sidebar-icon"> <BiHomeAlt/> </div>
             <Link className="sidebar-text" to="/assets">Assets</Link>
+            <div className="sidebar-icon"> <GiPayMoney/> </div>
+            <Link className="sidebar-text" to="/liabilities">Liabilities</Link>
             <div className="sidebar-icon"> <FaRegMoneyBill1/> </div>
             <Link className="sidebar-text" to="/income">Income</Link>
             <div className="sidebar-icon"> <BsWallet2/> </div>

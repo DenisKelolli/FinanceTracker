@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Assets.css';
+import './Liabilities.css';
 import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement, CategoryScale, PieController, Legend, Title } from 'chart.js';
 
@@ -10,30 +10,28 @@ Chart.register(ArcElement, CategoryScale, PieController, Legend, Title);
 
 
 const headers = [
-  'Real Estate', 'Vehicles', 'Stocks', 'Retirement', 'Cash', 'Personal Assets'
-];
+  'Mortgage Loan', 'Car Loan', 'Credit Card Debt', 'Student Loan',];
 
-const Assets = ({ onTotalChange }) => {
+  const Liabilities = ({ onTotalChange }) => {
   const [formData, setFormData] = useState({});
-  const [allAssets, setAllAssets] = useState({});
+  const [allLiabilities, setAllLiabilities] = useState({});
   const [editMode, setEditMode] = useState(null);
 
-    
   useEffect(() => {
-    const totalAssets = computeTotal();
-    onTotalChange(totalAssets);
-  }, [allAssets]); // assuming assets is your state/data
+    const totalLiabilities = computeTotal();
+    onTotalChange(totalLiabilities);
+  }, [allLiabilities]); // assuming liabilities is your state/data
 
   useEffect(() => {
     // Fetch all assets on component mount
     const fetchAssets = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/assets');
+        const response = await axios.get('http://localhost:3000/liabilities');
         const assetsData = {};
-        response.data.forEach(asset => {
-          assetsData[asset.category] = asset.asset;
+        response.data.forEach(liability => {
+          assetsData[liability.category] = liability.liability;
         });
-        setAllAssets(assetsData);
+        setAllLiabilities(assetsData);
       } catch (error) {
         console.error('Error fetching assets:', error);
       }
@@ -63,10 +61,10 @@ const Assets = ({ onTotalChange }) => {
   const handleSubmit = async (header) => {
     if (formData[header]) {
       try {
-        await axios.post('http://localhost:3000/assets', {
+        await axios.post('http://localhost:3000/liabilities', {
           category: header,
-          assetTitle: formData[header].text,
-          assetValue: Number(formData[header].value)
+          liabilityTitle: formData[header].text,
+          liabilityValue: Number(formData[header].value)
         });
         console.log('Data sent successfully');
         window.location.reload();
@@ -76,12 +74,12 @@ const Assets = ({ onTotalChange }) => {
     }
   };
 
-  const handleEditAsset = (header, asset) => {
+  const handleEditAsset = (header, liability) => {
     setEditMode({ 
         category: header, 
-        assetId: asset._id, 
-        value: asset.assetValue, 
-        assetTitle: asset.assetTitle 
+        liabilityId: liability._id, 
+        value: liability.liabilityValue, 
+        liabilityTitle: liability.liabilityTitle 
     });
 };
 
@@ -93,10 +91,10 @@ const Assets = ({ onTotalChange }) => {
   
   const handleEditSubmit = async () => {
     try {
-      await axios.put(`http://localhost:3000/assets`, {
+      await axios.put(`http://localhost:3000/liabilities`, {
         category: editMode.category,
-        assetId: editMode.assetId,  // Using asset's unique ID
-        assetValue: Number(editMode.value)
+        liabilityId: editMode.liabilityId,  // Using asset's unique ID
+        liabilityValue: Number(editMode.value)
       });
       console.log('Asset edited successfully');
       window.location.reload();
@@ -106,12 +104,12 @@ const Assets = ({ onTotalChange }) => {
   };
   
   
-  const handleDeleteAsset = async (header, asset) => {
+  const handleDeleteAsset = async (header, liability) => {
     try {
-      await axios.delete(`http://localhost:3000/assets`, {
+      await axios.delete(`http://localhost:3000/liabilities`, {
         data: {
           category: header,
-          assetId: asset._id  // Using asset's unique ID
+          liabilityId: liability._id  // Using asset's unique ID
         }
       });
       console.log('Asset deleted successfully');
@@ -128,9 +126,10 @@ const Assets = ({ onTotalChange }) => {
       return acc + (currentAsset.value ? Number(currentAsset.value) : 0);
     }, 0);
 
-    let totalFromAllAssets = Object.values(allAssets).reduce((total, assetsList) => {
-      return total + assetsList.reduce((acc, asset) => {
-        return acc + (asset.assetValue ? Number(asset.assetValue) : 0);
+    let totalFromAllAssets = Object.values(allLiabilities).reduce((total, assetsList) => {
+      if (!assetsList) return total;
+      return total + assetsList.reduce((acc, liability) => {
+        return acc + (liability.liabilityValue ? Number(liability.liabilityValue) : 0);
       }, 0);
     }, 0);
 
@@ -159,13 +158,12 @@ const pieOptions = {
     },
   };
   
-  
 
   const getPieData = () => {
     const data = headers.map(header => {
-      if (allAssets[header]) {
-        return allAssets[header].reduce((acc, asset) => {
-          return acc + (asset.assetValue ? Number(asset.assetValue) : 0);
+      if (allLiabilities[header]) {
+        return allLiabilities[header].reduce((acc, liability) => {
+          return acc + (liability.liabilityValue ? Number(liability.liabilityValue) : 0);
         }, 0);
       } else {
         return 0;
@@ -182,7 +180,6 @@ const pieOptions = {
           '#FFCE56',
           '#4BC0C0',
           '#E7E9ED',
-          '#71B280',
         ],
       }],
     };
@@ -202,11 +199,11 @@ const pieOptions = {
             }
           </h3>
           
-          {allAssets[header] && allAssets[header].map((asset, index) => (
+          {allLiabilities[header] && allLiabilities[header].map((liability, index) => (
   <div key={index} className="asset-item">
-    {editMode && editMode.assetId === asset._id ? (
+    {editMode && editMode.liabilityId === liability._id ? (
       <>
-        {asset.assetTitle}: $
+        {liability.liabilityTitle}: $
         <input 
           type="number"
           value={editMode.value}
@@ -217,10 +214,10 @@ const pieOptions = {
       </>
     ) : (
       <>
-        {asset.assetTitle}: ${asset.assetValue}
+        {liability.liabilityTitle}: ${liability.liabilityValue}
         <div className="asset-action-buttons">
-          <button className="assets-edit-button" onClick={() => handleEditAsset(header, asset)}>Edit</button>
-          <button className="assets-delete-button" onClick={() => handleDeleteAsset(header, asset)}>Delete</button>
+          <button className="assets-edit-button" onClick={() => handleEditAsset(header, liability)}>Edit</button>
+          <button className="assets-delete-button" onClick={() => handleDeleteAsset(header, liability)}>Delete</button>
         </div>
       </>
     )}
@@ -247,14 +244,15 @@ const pieOptions = {
           )}
         </div>
       ))}
-            <div className="assets-section">
-                <h3>Total Assets</h3>
+        <div className="assets-section">
+                <h3>Total Liabilities</h3>
                 <div className='asset-item-total'>${computeTotal()}</div>
             </div>
     </div>
     <div className="assets-pie-section">
-                <h3>Pie Chart of Assets</h3>
+                <h3>Pie Chart of Liabilities</h3>
                 <Pie data={getPieData()} options={pieOptions} />
+                
             </div> 
     </div>
     
@@ -262,4 +260,4 @@ const pieOptions = {
   );
 };
 
-export default Assets;
+export default Liabilities;

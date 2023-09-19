@@ -12,10 +12,21 @@
     background-color: white;
   }
 
-  .asset-item{
+  .asset-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding-left: 10px;
+    padding-bottom: 5px;
     font-size: 20px;
   }
+
+  .asset-action-buttons {
+    display: flex;
+    gap: 10px; /* to provide space between buttons */
+  }
+  
+  
   
   h3 {
     text-align: left;
@@ -23,6 +34,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid rgb(60, 57, 57);
+    font-size: 24px;
   }
   
   .assets-add-icon,
@@ -30,6 +43,10 @@
   margin-left: 10px;
   cursor: pointer;
   color: #007bff;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  margin-bottom: 3px;
 }
   
   .assets-input-container {
@@ -67,4 +84,27 @@
 .assets-pie-section{
   height: 500px;
   width: 600px;
+}
+
+.assets-edit-button{
+ background-color: #36A2EB;
+ border: 1px solid white;
+ padding: 3px 10px;
+ margin-left: 10px;
+ cursor: pointer;
+ border-radius: 4px;
+}
+
+.assets-delete-button{
+ background-color: #4BC0C0;
+ border: 1px solid white;
+ padding: 3px 10px;
+ cursor: pointer;
+ border-radius: 4px;
+}
+
+.asset-item-total{
+  padding-left: 10px;
+  padding-bottom: 5px;
+  font-size: 20px;
 }
