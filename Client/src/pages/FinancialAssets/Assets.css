@@ -1,9 +1,9 @@
-.assets-container {
+.liabilities-container {
   margin: 10px;
   width: 600px;
   }
   
-  .assets-section {
+  .liabilities-section {
     width: 400px;
     flex: 1;
     border: 1px solid #e1e1e1;
@@ -12,7 +12,7 @@
     background-color: white;
   }
 
-  .asset-item {
+  .liability-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,7 +21,7 @@
     font-size: 20px;
   }
 
-  .asset-action-buttons {
+  .liability-action-buttons {
     display: flex;
     gap: 10px; /* to provide space between buttons */
   }
@@ -38,8 +38,8 @@
     font-size: 24px;
   }
   
-  .assets-add-icon,
-.assets-remove-icon {
+  .liabilities-add-icon,
+.liabilities-remove-icon {
   margin-left: 10px;
   cursor: pointer;
   color: #007bff;
@@ -49,7 +49,7 @@
   margin-bottom: 3px;
 }
   
-  .assets-input-container {
+  .liabilities-input-container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -62,7 +62,7 @@
     border-radius: 4px;
   }
   
-  .assets-submit {
+  .liabilities-submit {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
     background-color: #007bff;
@@ -73,20 +73,20 @@
     transition: background-color 0.3s;
   }
   
-  .assets-submit:hover {
+  .liabilities-submit:hover {
     background-color: #0056b3;
   }
 
-.assetsandpiecontainer{
+.liabilitiesandpiecontainer{
  display: flex;
 }
 
-.assets-pie-section{
+.liabilities-pie-section{
   height: 500px;
   width: 600px;
 }
 
-.assets-edit-button{
+.liabilities-edit-button{
  background-color: #36A2EB;
  border: 1px solid white;
  padding: 3px 10px;
@@ -95,7 +95,7 @@
  border-radius: 4px;
 }
 
-.assets-delete-button{
+.liabilities-delete-button{
  background-color: #4BC0C0;
  border: 1px solid white;
  padding: 3px 10px;
@@ -103,7 +103,7 @@
  border-radius: 4px;
 }
 
-.asset-item-total{
+.liability-item-total{
   padding-left: 10px;
   padding-bottom: 5px;
   font-size: 20px;

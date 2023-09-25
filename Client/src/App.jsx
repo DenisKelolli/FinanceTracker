@@ -5,6 +5,8 @@ import SideBar from "./components/Sidebar"
 import NetWorth from "./pages/Dashboard/NetWorth"
 import Assets from './pages/FinancialAssets/Assets';
 import Liabilities from './pages/Liabilities/Liabilities';
+import Income from './pages/Income/Income';
+import Transactions from './pages/Transactions/Transactions';
 
 function App() {
   
@@ -22,6 +24,8 @@ function App() {
           <Route exact path="/" element={<NetWorth value={netWorth} />} /> 
           <Route exact path="/assets" element={<Assets   onTotalChange={setTotalAssets}/>} /> 
           <Route exact path="/liabilities" element={<Liabilities onTotalChange={setTotalLiabilities} />} /> 
+          <Route exact path="/income" element={<Income />} /> 
+          <Route exact path="/transactions" element={<Transactions />} /> 
         </Routes>
       </div>
     </Router>

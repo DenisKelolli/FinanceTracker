@@ -1,0 +1,56 @@
+.transactions-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+}
+
+.transactions-form-container {
+  margin-bottom: 20px;
+}
+
+.transactions-input-group {
+  margin-bottom: 15px;
+}
+
+.transactions-input, .transactions-select, .transactions-button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.transactions-button {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.transactions-button:hover {
+  background-color: #45a049;
+}
+
+.transactions-table-container {
+  margin-top: 20px;
+}
+
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transactions-table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 8px 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
