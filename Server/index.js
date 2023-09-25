@@ -6,6 +6,8 @@ const app = express();
 const port = "3000";
 const Assets = require("./models/assets");
 const Liabilities = require("./models/liabilities");
+const Incomes = require("./models/incomes");
+const Transactions = require("./models/transactions");
 
 
 //Middleware
@@ -185,7 +187,108 @@ app.post('/liabilities', async (req, res) => {
   }
 });
 
+//Income
 
+app.get('/income', async (req, res) => {
+  try {
+    const allIncome = await Incomes.find();
+    res.status(200).json(allIncome);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching assets', error: error.message });
+  }
+});
+
+
+app.put('/income', async (req, res) => {
+  const { category, incomeId, incomeValue } = req.body;
+
+  try {
+    const incomeDocument = await Incomes.findOne({ category });
+    if (incomeDocument) {
+      const assetToUpdate = incomeDocument.income.id(incomeId);
+      if (assetToUpdate) {
+        assetToUpdate.incomeValue = incomeValue;
+        await incomeDocument.save();
+        return res.json({ success: true, message: "Asset updated successfully." });
+
+      }
+    }
+    res.status(404).json({ success: false, message: "Asset not found." });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server Error.", error: error.message });
+  }
+});
+
+
+app.delete('/income', async (req, res) => {
+  const { category, incomeId } = req.body;
+
+  try {
+    const incomeDocument = await Incomes.findOne({ category });
+    if (incomeDocument) {
+      const assetToRemove = incomeDocument.income.id(incomeId);
+      if (assetToRemove) {
+        // Remove the subdocument from the array
+        incomeDocument.income.pull(assetToRemove);
+        await incomeDocument.save();
+        return res.json({ success: true, message: "Asset updated successfully." });
+
+      }
+    }
+    res.status(404).json({ success: false, message: "Asset not found." });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server Error.", error: error.message });
+  }
+});
+
+
+
+app.post('/income', async (req, res) => {
+  try {
+      // Extract data from the request body
+      const { category, incomeTitle, incomeValue } = req.body;
+
+      // Check if an asset for the given category already exists
+      let incomeDocument = await Incomes.findOne({ category });
+
+      if (incomeDocument) {
+          // If exists, push the new asset to the asset array
+          incomeDocument.income.push({ incomeTitle, incomeValue });
+          await incomeDocument.save();
+      } else {
+          // Otherwise, create a new document
+          incomeDocument = new Incomes({
+              category,
+              income: [{ incomeTitle, incomeValue }]
+          });
+          await incomeDocument.save();
+      }
+
+      res.status(200).json({ message: 'Asset added successfully!' });
+
+  } catch (error) {
+      res.status(500).json({ message: 'Error adding asset', error: error.message });
+  }
+});
+
+app.post('/transactions', async (req, res) => {
+  try {
+    const transaction = new Transactions(req.body);
+    await transaction.save();
+    res.json({ success: true, message: "Transaction saved successfully." });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server Error.", error: error.message });
+  }
+});
+
+app.get('/transactions', async (req, res) => {
+  try {
+    const transactions = await Transactions.find();
+    res.json(transactions);
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server Error.", error: error.message });
+  }
+});
 
 
   const start = async () => {
