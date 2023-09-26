@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './RecentTransactions.css';
 
 const RecentTransactions = () => {
     const [recentTransactions, setRecentTransactions] = useState([]);
@@ -8,14 +9,19 @@ const RecentTransactions = () => {
         const fetchRecentTransactions = async () => {
             try {
                 const response = await axios.get('http://localhost:3000/transactions');
-                // Assuming the data is sorted by date in descending order (most recent first)
-                // If it's not, you might need to sort it before slicing the top 5
-                const latestTransactions = response.data.slice(0, 5);
+        
+                // Sort transactions by date in descending order
+                const sortedTransactions = response.data.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+                // Get the top 5 recent transactions
+                const latestTransactions = sortedTransactions.slice(0, 5);
+        
                 setRecentTransactions(latestTransactions);
             } catch (error) {
                 console.error("Error fetching recent transactions:", error);
             }
         };
+        
 
         fetchRecentTransactions();
     }, []);

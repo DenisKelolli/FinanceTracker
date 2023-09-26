@@ -4,20 +4,36 @@ import './Transactions.css';
 
 const Transactions = () => {
     const [transactionName, setTransactionName] = useState('');
+    const [transactionNameError, setTransactionNameError] = useState(false);
     const [type, setType] = useState('');
- // Adjust the initial date value to avoid timezone issues
+    const [typeError, setTypeError] = useState(false);
     const currentDate = new Date();
     const formattedDate = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(currentDate.getDate()).padStart(2, '0')}`;
     const [date, setDate] = useState(formattedDate);
-    const [amount, setAmount] = useState(''); 
+    const [dateError, setDateError] = useState(false);
+    const [amount, setAmount] = useState('');
+    const [amountError, setAmountError] = useState(false);
     const [allTransactions, setAllTransactions] = useState([]);
     const [typeFilter, setTypeFilter] = useState('');
     const [monthFilter, setMonthFilter] = useState('');
 
     const handleSubmit = async () => {
+        setTransactionNameError(!transactionName);
+        setTypeError(!type);
+        setDateError(!date);
+        setAmountError(!amount);
+    
+        if (!transactionName || !type || !date || !amount) {
+            return;
+        }
+    
         try {
-            // Convert the date to an ISO string with timezone included
-            const localIsoString = new Date(date + "T00:00:00").toISOString();
+            // Get the current time (hours, minutes, seconds, and milliseconds)
+            const currentTime = new Date();
+            const timeString = `${String(currentTime.getHours()).padStart(2, '0')}:${String(currentTime.getMinutes()).padStart(2, '0')}:${String(currentTime.getSeconds()).padStart(2, '0')}.${String(currentTime.getMilliseconds()).padStart(3, '0')}`;
+    
+            // Use the provided date and attach the current time to it
+            const localIsoString = new Date(date + "T" + timeString).toISOString();
     
             await axios.post('http://localhost:3000/transactions', {
                 transactionName,
@@ -47,7 +63,6 @@ const Transactions = () => {
 
     const handleAmountChange = (e) => {
         const value = e.target.value;
-        // Allow empty values and any numeric value
         if (value === '' || (!isNaN(value) && value >= 0)) {
             setAmount(value);
         }
@@ -62,8 +77,7 @@ const Transactions = () => {
                 return false;
             }
             return true;
-        })
-        .sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort in descending order based on date
+        });
 
     return (
         <div className="transactions-container">
@@ -75,23 +89,35 @@ const Transactions = () => {
                             type="text" 
                             placeholder="Name of Transaction" 
                             value={transactionName}
-                            onChange={(e) => setTransactionName(e.target.value)}
+                            onChange={(e) => {
+                                setTransactionName(e.target.value);
+                                setTransactionNameError(!e.target.value);
+                            }}
                         />
+                        {transactionNameError && <span style={{color: 'red'}}>Name can't be blank</span>}
                     </div>
                     <div className="transactions-input-group">
-                        <select className="transactions-select" value={type} onChange={(e) => setType(e.target.value)}>
+                        <select className="transactions-select" value={type} onChange={(e) => {
+                            setType(e.target.value);
+                            setTypeError(!e.target.value);
+                        }}>
                             <option value="" disabled>Select type</option>
                             <option value="Income">Income</option>
                             <option value="Expense">Expense</option>
                         </select>
+                        {typeError && <span style={{color: 'red'}}>Type can't be blank</span>}
                     </div>
                     <div className="transactions-input-group">
                         <input 
                             className="transactions-input"
                             type="date" 
                             value={date} 
-                            onChange={(e) => setDate(e.target.value)}
+                            onChange={(e) => {
+                                setDate(e.target.value);
+                                setDateError(!e.target.value);
+                            }}
                         />
+                        {dateError && <span style={{color: 'red'}}>Date can't be blank</span>}
                     </div>
                     <div className="transactions-input-group">
                         <input 
@@ -101,6 +127,7 @@ const Transactions = () => {
                             value={amount}
                             onChange={handleAmountChange}
                         />
+                        {amountError && <span style={{color: 'red'}}>Amount can't be blank</span>}
                     </div>
                     <button className="transactions-button" type="button" onClick={handleSubmit}>
                         Add Transaction
@@ -161,7 +188,6 @@ const Transactions = () => {
             </div>
         </div>
     );
-    
 };
 
 export default Transactions;

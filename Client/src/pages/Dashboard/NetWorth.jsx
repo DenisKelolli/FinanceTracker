@@ -1,7 +1,7 @@
 import React from "react";
 import "./NetWorth.css";
 
-const NetWorth = ({ value }) => {
+const NetWorth = () => {
     return (
       <div className="networth-container">
         <div className="networth-row">
@@ -11,7 +11,7 @@ const NetWorth = ({ value }) => {
             <div className="networth-title">Net Worth</div>
         </div>
         <div className="networth-row">
-            <span className="networth-value">${value.toLocaleString()}</span>
+            <span className="networth-value">$</span>
         </div>
       </div>
     );
