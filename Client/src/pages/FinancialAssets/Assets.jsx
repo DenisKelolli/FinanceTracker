@@ -13,16 +13,12 @@ const headers = [
   'Real Estate', 'Vehicles', 'Stocks', 'Retirement', 'Cash', 'Personal Assets'
 ];
 
-const Assets = ({ onTotalChange }) => {
+const Assets = () => {
   const [formData, setFormData] = useState({});
   const [allAssets, setAllAssets] = useState({});
   const [editMode, setEditMode] = useState(null);
 
-    
-  useEffect(() => {
-    const totalAssets = computeTotal();
-    onTotalChange(totalAssets);
-  }, [allAssets]); // assuming assets is your state/data
+
 
   useEffect(() => {
     // Fetch all assets on component mount

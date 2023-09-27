@@ -8,15 +8,10 @@ Chart.register(ArcElement, CategoryScale, PieController, Legend, Title);
 const headers = [
   'Mortgage Loan', 'Car Loan', 'Credit Card Debt', 'Student Loan',];
 
-  const Liabilities = ({ onTotalChange }) => {
+  const Liabilities = () => {
   const [formData, setFormData] = useState({});
   const [allLiabilities, setAllLiabilities] = useState({});
   const [editMode, setEditMode] = useState(null);
-
-  useEffect(() => {
-    const totalLiabilities = computeTotal();
-    onTotalChange(totalLiabilities);
-  }, [allLiabilities]); // assuming liabilities is your state/data
 
   useEffect(() => {
     // Fetch all liabilities on component mount

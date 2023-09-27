@@ -1,0 +1,35 @@
+.DashBoardIncome-container {
+    width: 200px;
+    height: 100px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    border: 2px solid black;
+}
+
+.DashBoardIncome-row {
+    display: flex;
+    align-items: center;
+}
+
+.DashBoardIncome-icon-left {
+    margin-left: 0;
+    /* Add additional styling or class for the icon on the left if needed */
+}
+
+.DashBoardIncome-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+
+.DashBoardIncome-title {
+    margin-left: 0;
+    font-weight: bold;
+}
+
+.DashBoardIncome-value {
+    margin-left: 0;
+    font-size: 24px;
+    font-weight: bold;
+}

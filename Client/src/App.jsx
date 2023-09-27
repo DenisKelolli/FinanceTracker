@@ -7,6 +7,7 @@ import Liabilities from './pages/Liabilities/Liabilities';
 import Income from './pages/Income/Income';
 import Transactions from './pages/Transactions/Transactions';
 import Dashboard from './pages/Dashboard/Dashboard';
+import Expenses from './pages/Expenses/Expenses';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/liabilities" element={<Liabilities />} /> 
           <Route exact path="/income" element={<Income />} /> 
           <Route exact path="/transactions" element={<Transactions />} /> 
+          <Route exact path="/expenses" element={<Expenses />} /> 
         </Routes>
       </div>
     </Router>
