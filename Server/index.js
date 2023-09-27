@@ -8,6 +8,7 @@ const Assets = require("./models/assets");
 const Liabilities = require("./models/liabilities");
 const Incomes = require("./models/incomes");
 const Transactions = require("./models/transactions");
+const Expenses = require("./models/expenses");
 
 
 //Middleware
@@ -243,6 +244,7 @@ app.delete('/income', async (req, res) => {
 
 
 
+
 app.post('/income', async (req, res) => {
   try {
       // Extract data from the request body
@@ -273,22 +275,108 @@ app.post('/income', async (req, res) => {
 
 app.post('/transactions', async (req, res) => {
   try {
-    const transaction = new Transactions(req.body);
-    await transaction.save();
-    res.json({ success: true, message: "Transaction saved successfully." });
+      // If req.body.date is not provided, default to the current date-time
+      req.body.date = req.body.date ? new Date(req.body.date) : new Date();
+
+      const transaction = new Transactions(req.body);
+      await transaction.save();
+      res.json({ success: true, message: "Transaction saved successfully." });
+  } catch (error) {
+      res.status(500).json({ success: false, message: "Server Error.", error: error.message });
+  }
+});
+
+//Expenses
+
+app.get('/expenses', async (req, res) => {
+  try {
+    const allExpenses = await Expenses.find();
+    res.status(200).json(allExpenses);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching expenses', error: error.message });
+  }
+});
+
+app.put('/expenses', async (req, res) => {
+  const { category, expenseId, expenseValue } = req.body;
+
+  try {
+    const expenseDocument = await Expenses.findOne({ category });
+    if (expenseDocument) {
+      const expenseToUpdate = expenseDocument.expenses.id(expenseId);
+      if (expenseToUpdate) {
+        expenseToUpdate.expensesValue = expenseValue;
+        await expenseDocument.save();
+        return res.json({ success: true, message: "Expense updated successfully." });
+      }
+    }
+    res.status(404).json({ success: false, message: "Expense not found." });
   } catch (error) {
     res.status(500).json({ success: false, message: "Server Error.", error: error.message });
   }
 });
 
+app.delete('/expenses', async (req, res) => {
+  const { category, expenseId } = req.body;
+
+  try {
+    const expenseDocument = await Expenses.findOne({ category });
+    if (expenseDocument) {
+      const expenseToRemove = expenseDocument.expenses.id(expenseId);
+      if (expenseToRemove) {
+        expenseDocument.expenses.pull(expenseToRemove);
+        await expenseDocument.save();
+        return res.json({ success: true, message: "Expense updated successfully." });
+      }
+    }
+    res.status(404).json({ success: false, message: "Expense not found." });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server Error.", error: error.message });
+  }
+});
+
+app.post('/expenses', async (req, res) => {
+  try {
+    const { category, expenseTitle, expenseValue } = req.body;
+
+    // Check for required fields
+    if (!category || !expenseTitle || expenseValue == null) {
+      return res.status(400).json({ message: 'Missing required fields' });
+    }
+
+    let expenseDocument = await Expenses.findOne({ category });
+
+    if (expenseDocument) {
+      if (!expenseDocument.expenses) expenseDocument.expenses = [];
+      expenseDocument.expenses.push({ expensesTitle: expenseTitle, expensesValue: expenseValue });
+      await expenseDocument.save();
+    } else {
+      expenseDocument = new Expenses({
+        category,
+        expenses: [{ expensesTitle: expenseTitle, expensesValue: expenseValue }]
+    });
+      await expenseDocument.save();
+    }
+
+    res.status(200).json({ message: 'Expense added successfully!' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error adding s', error: error.message });
+  }
+});
+
+
+
+
 app.get('/transactions', async (req, res) => {
   try {
-    const transactions = await Transactions.find();
+    const transactions = await Transactions.find().sort({date: -1}); // Sorting in descending order based on date-time
     res.json(transactions);
   } catch (error) {
     res.status(500).json({ success: false, message: "Server Error.", error: error.message });
   }
 });
+
+
 
 
   const start = async () => {
