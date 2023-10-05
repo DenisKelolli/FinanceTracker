@@ -9,6 +9,8 @@ const Liabilities = require("./models/liabilities");
 const Incomes = require("./models/incomes");
 const Transactions = require("./models/transactions");
 const Expenses = require("./models/expenses");
+const Histories = require("./models/history");
+
 
 
 //Middleware
@@ -376,7 +378,26 @@ app.get('/transactions', async (req, res) => {
   }
 });
 
+app.get('/history', async (req, res) => {
+  try {
+    const allHistories = await Histories.find();
+    const income = allHistories.filter(item => item.type === 'Income');
+    const expenses = allHistories.filter(item => item.type === 'Expenses');
+    res.json({ income, expenses });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 
+app.post('/history', async (req, res) => {
+  try {
+    const history = new Histories(req.body);
+    await history.save();
+    res.status(201).send(history);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 
 
   const start = async () => {
