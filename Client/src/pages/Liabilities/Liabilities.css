@@ -1,110 +1,112 @@
-.assets-container {
-    margin: 10px;
-    width: 600px;
-    }
-    
-    .assets-section {
-      width: 400px;
-      flex: 1;
-      border: 1px solid #e1e1e1;
-      padding: 20px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-      background-color: white;
-    }
-  
-    .asset-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-left: 10px;
-      padding-bottom: 5px;
-      font-size: 20px;
-    }
-  
-    .asset-action-buttons {
-      display: flex;
-      gap: 10px; /* to provide space between buttons */
-    }
-    
-    
-    
-    h3 {
-      text-align: left;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgb(60, 57, 57);
-      font-size: 24px;
-    }
-    
-    .assets-add-icon,
-  .assets-remove-icon {
-    margin-left: 10px;
-    cursor: pointer;
-    color: #007bff;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    margin-bottom: 3px;
-  }
-    
-    .assets-input-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    
-    input[type="text"], 
-    input[type="number"] {
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    
-    .assets-submit {
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    
-    .assets-submit:hover {
-      background-color: #0056b3;
-    }
-  
-  .assetsandpiecontainer{
-   display: flex;
+.liabilities-container {
+  margin: 10px;
+  width: 600px;
   }
   
-  .assets-pie-section{
-    height: 500px;
-    width: 600px;
+  .liabilities-section {
+    width: 400px;
+    flex: 1;
+    border: 1px solid #e1e1e1;
+    padding: 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
   }
-  
-  .assets-edit-button{
-   background-color: #36A2EB;
-   border: 1px solid white;
-   padding: 3px 10px;
-   margin-left: 10px;
-   cursor: pointer;
-   border-radius: 4px;
-  }
-  
-  .assets-delete-button{
-   background-color: #4BC0C0;
-   border: 1px solid white;
-   padding: 3px 10px;
-   cursor: pointer;
-   border-radius: 4px;
-  }
-  
-  .asset-item-total{
+
+  .liability-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding-left: 10px;
     padding-bottom: 5px;
     font-size: 20px;
   }
+
+  .liability-action-buttons {
+    display: flex;
+    gap: 10px; /* to provide space between buttons */
+  }
+  
+  
+  
+  h3 {
+    text-align: left;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(60, 57, 57);
+    font-size: 24px;
+  }
+  
+  .liabilities-add-icon,
+.liabilities-remove-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #007bff;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  margin-bottom: 3px;
+}
+  
+  .liabilities-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  input[type="text"], 
+  input[type="number"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .liabilities-submit {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .liabilities-submit:hover {
+    background-color: #0056b3;
+  }
+
+.liabilitiesandpiecontainer{
+ display: flex;
+}
+
+.liabilities-pie-section{
+  height: 500px;
+  width: 600px;
+}
+
+.liabilities-edit-button{
+ background-color: #36A2EB;
+ border: 1px solid white;
+ padding: 3px 10px;
+ margin-left: 10px;
+ cursor: pointer;
+ border-radius: 4px;
+}
+
+.liabilities-delete-button{
+ background-color: #4BC0C0;
+ border: 1px solid white;
+ padding: 3px 10px;
+ cursor: pointer;
+ border-radius: 4px;
+}
+
+.liability-item-total{
+  padding-left: 10px;
+  padding-bottom: 5px;
+  font-size: 20px;
+}
+
+

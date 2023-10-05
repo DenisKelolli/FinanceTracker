@@ -1,45 +1,48 @@
-.liabilities-container {
+.assets-container {
   margin: 10px;
-  width: 600px;
-  }
-  
-  .liabilities-section {
-    width: 400px;
-    flex: 1;
-    border: 1px solid #e1e1e1;
-    padding: 20px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    background-color: white;
-  }
+  width: 100%; /* Change for full width */
+  max-width: 600px; /* Limit the width to 600px on larger screens */
+}
 
-  .liability-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 10px;
-    padding-bottom: 5px;
-    font-size: 20px;
-  }
+.assets-section {
+  width: 100%;
+  flex: 1;
+  border: 1px solid #e1e1e1;
+  padding: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  overflow-y: auto;
+  max-height: 500px;
+}
 
-  .liability-action-buttons {
-    display: flex;
-    gap: 10px; /* to provide space between buttons */
-  }
-  
-  
-  
-  h3 {
-    text-align: left;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid rgb(60, 57, 57);
-    font-size: 24px;
-  }
-  
-  .liabilities-add-icon,
-.liabilities-remove-icon {
+.asset-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  font-size: 20px;
+  border-bottom: 1px solid #e1e1e1;
+  margin-bottom: 5px;
+}
+
+.asset-action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+h3 {
+  text-align: left;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(60, 57, 57);
+  font-size: 24px;
+}
+
+.assets-add-icon,
+.assets-remove-icon {
   margin-left: 10px;
   cursor: pointer;
   color: #007bff;
@@ -48,63 +51,76 @@
   font-size: 20px;
   margin-bottom: 3px;
 }
-  
-  .liabilities-input-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  input[type="text"], 
-  input[type="number"] {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .liabilities-submit {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .liabilities-submit:hover {
-    background-color: #0056b3;
-  }
 
-.liabilitiesandpiecontainer{
- display: flex;
+.assets-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.liabilities-pie-section{
+input[type="text"], 
+input[type="number"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; /* Adjust for mobile screens */
+}
+
+.assets-submit {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block; /* Adjust for mobile screens */
+  width: 100%;
+}
+
+.assets-submit:hover {
+  background-color: #0056b3;
+}
+
+.assetsandpiecontainer {
+  display: flex;
+  gap: 20px;
+  flex-direction: column; /* Stacks sections on top of each other for mobile screens */
+}
+
+.assets-pie-section {
   height: 500px;
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
 }
 
-.liabilities-edit-button{
- background-color: #36A2EB;
- border: 1px solid white;
- padding: 3px 10px;
- margin-left: 10px;
- cursor: pointer;
- border-radius: 4px;
+.assets-edit-button {
+  background-color: #36A2EB;
+  border: 1px solid white;
+  padding: 3px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
-.liabilities-delete-button{
- background-color: #4BC0C0;
- border: 1px solid white;
- padding: 3px 10px;
- cursor: pointer;
- border-radius: 4px;
+.assets-delete-button {
+  background-color: #4BC0C0;
+  border: 1px solid white;
+  padding: 3px 10px;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
-.liability-item-total{
+.asset-item-total {
   padding-left: 10px;
   padding-bottom: 5px;
   font-size: 20px;
+}
+
+
+@media screen and (min-width: 600px) {
+  .assetsandpiecontainer {
+    flex-direction: row;
+  }
 }

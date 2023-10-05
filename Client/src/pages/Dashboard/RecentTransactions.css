@@ -3,13 +3,45 @@
     padding: 20px;
     border-radius: 10px;
     margin-left: 20px;
-    width: 940px;
+    margin-right: 20px;
+    max-width: 980px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.recenttransactions-th{
+.recenttransactions-th {
     font-size: 20px;
 }
 
-.recenttransactions-td{
+.recenttransactions-td {
     font-size: 18px;
+}
+
+.transactions-table {
+    width: 100%;
+    table-layout: fixed;
+    overflow-x: auto;
+}
+
+/* Style for smaller screens */
+@media (max-width: 600px) {
+    .recent-transactions-container {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .recenttransactions-th,
+    .recenttransactions-td {
+        font-size: 16px;
+    }
+    /* Set rows to display as flex containers */
+    .transactions-table tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;  /* Separate each "row" */
+        border: 1px solid #e1e1e1;  /* Optional: Add border around each "row" for clarity */
+        padding: 10px;  /* Some padding around the "row" */
+    }
+    .transactions-table thead {
+        display: none;  /* Hide the table headers as they're not needed in this view */
+    }
 }

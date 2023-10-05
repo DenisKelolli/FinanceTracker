@@ -9,13 +9,23 @@
 .dashboard-container {
     width: 100%; /* Take the full width of its container */
     max-width: 1200px; /* Limit its width to a maximum value */
-    margin: 0 auto; /* Auto margins on left and right to center it horizontally */
+    margin-right: 20px;
+    margin-left: 20px;
     padding: 0 20px; /* 20px padding on left and right to ensure inner content is not too close to the edge */
 }
 
+
 /* Mobile Responsiveness */
+
+@media only screen and (max-width: 1100px) {
+    .dashboard-networth-income-expenses {
+        margin-top: 50px;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .dashboard-networth-income-expenses {
-        flex-direction: column; /* Stack them vertically on small screens */
+        flex-direction: column; 
+        margin-top: 50px;
     }
 }
