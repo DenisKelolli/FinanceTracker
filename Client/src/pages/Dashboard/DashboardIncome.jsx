@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./DashBoardIncome.css";
+import { BsGraphUp } from "react-icons/bs";
 
 const DashBoardIncome = () => {
   const [incomeTotal, setIncomeTotal] = useState(0);
@@ -34,16 +35,20 @@ const DashBoardIncome = () => {
     fetchIncome();
   }, []);
 
+  const formatNumber = (num) => {
+    return new Intl.NumberFormat().format(num);
+  }
+
   return (
     <div className="DashBoardIncome-container">
       <div className="DashBoardIncome-row">
-        <div className="DashBoardIncome-icon-left">icon</div>
+        <div className="DashBoardIncome-icon-left"> <BsGraphUp size={"30px"}  /></div>
       </div>
       <div className="DashBoardIncome-row">
-        <div className="DashBoardIncome-title">Income</div>
+        <div className="DashBoardIncome-title">Monthly Income</div>
       </div>
       <div className="DashBoardIncome-row">
-        <span className="DashBoardIncome-value">${incomeTotal.toFixed(2)}</span>
+        <span className="DashBoardIncome-value">${formatNumber(incomeTotal.toFixed(2))}</span>
       </div>
     </div>
   );

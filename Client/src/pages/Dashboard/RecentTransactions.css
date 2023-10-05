@@ -1,3 +1,15 @@
 .recent-transactions-container {
-    border: 1px solid black;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 20px;
+    width: 940px;
+}
+
+.recenttransactions-th{
+    font-size: 20px;
+}
+
+.recenttransactions-td{
+    font-size: 18px;
 }

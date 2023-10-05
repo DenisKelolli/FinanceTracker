@@ -1,4 +1,4 @@
-.DashBoardIncome-container {
+.DashboardExpenses-container {
     width: 300px;
     height: 150px;
     display: grid;
@@ -7,32 +7,32 @@
     border-radius: 10px;
 }
 
-.DashBoardIncome-row {
+.DashboardExpenses-row {
     display: flex;
     align-items: center;
     padding-left: 25px;
 }
 
-.DashBoardIncome-icon-left {
+.DashboardExpenses-icon-left {
     margin-left: 0;
     margin-top: 15px;
 }
 
-.DashBoardIncome-right {
+.DashboardExpenses-right {
     margin-left: auto;
     display: flex;
     align-items: center;
 }
 
 
-.DashBoardIncome-title {
+.DashboardExpenses-title {
     margin-left: 0;
     font-weight: bold;
     color: rgb(26, 90, 174);
     margin-top: 20px;
 }
 
-.DashBoardIncome-value {
+.DashboardExpenses-value {
     margin-left: 0;
     font-size: 24px;
     font-weight: bold;

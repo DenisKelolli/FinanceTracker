@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./NetWorth.css";
+import { BsGraphUpArrow } from "react-icons/bs";
 
 const NetWorth = () => {
   const [assetsTotal, setAssetsTotal] = useState(0);
@@ -51,18 +52,20 @@ const NetWorth = () => {
     fetchTotals();
   }, []);
 
-
+  const formatNumber = (num) => {
+    return new Intl.NumberFormat().format(num);
+  }
 
   return (
     <div className="networth-container">
       <div className="networth-row">
-        <div className="networth-icon-left">icon</div>
+        <div className="networth-icon-left"><BsGraphUpArrow size={"30px"} /></div>
       </div>
       <div className="networth-row">
         <div className="networth-title">Net Worth</div>
       </div>
       <div className="networth-row">
-        <span className="networth-value">${netWorth.toFixed(2)}</span>
+        <span className="networth-value">${formatNumber(netWorth.toFixed(2))}</span>
       </div>
     </div>
   );

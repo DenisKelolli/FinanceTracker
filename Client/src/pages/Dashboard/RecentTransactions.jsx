@@ -32,19 +32,19 @@ const RecentTransactions = () => {
             <table className="transactions-table">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Date</th>
-                        <th>Amount</th>
+                        <th className='recenttransactions-th'>Name</th>
+                        <th className='recenttransactions-th' >Type</th>
+                        <th className='recenttransactions-th'>Date</th>
+                        <th className='recenttransactions-th'>Amount</th>
                     </tr>
                 </thead>
                 <tbody>
                     {recentTransactions.map((transaction, index) => (
                         <tr key={index}>
-                            <td>{transaction.transactionName}</td>
-                            <td>{transaction.type}</td>
-                            <td>{new Date(transaction.date).toLocaleDateString()}</td>
-                            <td style={{
+                            <td className='recenttransactions-td'>{transaction.transactionName}</td>
+                            <td className='recenttransactions-td'>{transaction.type}</td>
+                            <td className='recenttransactions-td'>{new Date(transaction.date).toLocaleDateString()}</td>
+                            <td className='recenttransactions-td' style={{
                                 color: transaction.type === 'Expense' ? 'red' : 'green'
                             }}>
                                 {transaction.type === 'Expense' 
