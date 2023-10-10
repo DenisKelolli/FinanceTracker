@@ -400,6 +400,18 @@ app.post('/history', async (req, res) => {
 });
 
 
+app.delete('/history/:id', async (req, res) => {
+  try {
+      await Histories.findByIdAndRemove(req.params.id);
+      res.status(204).send();
+  } catch (error) {
+    console.error("Error deleting item:", error); 
+    res.status(400).json({ message: error.message }); 
+}
+
+});
+
+
   const start = async () => {
     try {
       await mongoose.connect(process.env.MONGO_CONNECTION_STRING);
