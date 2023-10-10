@@ -4,6 +4,7 @@ import NetWorth from './NetWorth';
 import RecentTransactions from './RecentTransactions';
 import DashBoardIncome from './DashboardIncome';
 import DashboardExpenses from './DashboardExpenses';
+import DashboardIncomeExpenses from './DashboardIncomeExpenses';
 
 
 function Dashboard() {
@@ -22,6 +23,9 @@ function Dashboard() {
             <div className="dashboard-expenses">
                <DashboardExpenses />
             </div>
+         </div>
+         <div className="dashboard-incomeexpenseshistory">
+            <DashboardIncomeExpenses />
          </div>
          <div className="dashboard-recenttransactions">
             <RecentTransactions />

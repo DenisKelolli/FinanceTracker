@@ -27,5 +27,6 @@
     .dashboard-networth-income-expenses {
         flex-direction: column; 
         margin-top: 50px;
+       
     }
 }

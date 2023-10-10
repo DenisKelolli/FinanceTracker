@@ -59,3 +59,32 @@
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
+
+
+.History-item button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+}
+
+.History-item button:hover {
+    opacity: 0.8;
+}
+
+.History-item button:focus {
+    outline: none;
+}
+
+.History-item button:nth-child(2) {
+    background-color: #4CAF50;  /* Edit button in green */
+    color: white;
+}
+
+.History-item button:nth-child(3) {
+    background-color: #f44336;  /* Delete button in red */
+    color: white;
+}

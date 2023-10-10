@@ -25,15 +25,22 @@ const History = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (type === 'Type' || month === 'Month' || year === 'Year') {
-            alert("Please select valid Type, Month, and Year.");
+        if (type === 'Type' || month === 'Month' || year === 'Year' || isNaN(parseFloat(value))) {
+            alert("Please select valid Type, Month, Year, and enter a numeric value.");
             return;
         }
-        const data = { type, value, month, year };
+        const data = { type, value: parseFloat(value), month, year };
         const response = await axios.post('http://localhost:3000/history', data);
         setHistories(response.data);
         window.location.reload();
     };
+
+
+    const handleDelete = async (id) => {
+            await axios.delete(`http://localhost:3000/history/${id}`);
+            window.location.reload();
+    };
+    
 
     return (
         <div className="History-container">
@@ -69,6 +76,7 @@ const History = () => {
                 {histories.income.map(item => (
                     <div className="History-item" key={item._id}>
                         ${item.value} {item.month} {item.year}
+                        <button onClick={() => handleDelete(item._id)}>Delete</button>
                     </div>
                 ))}
             </div>
@@ -78,6 +86,7 @@ const History = () => {
                 {histories.expenses.map(item => (
                     <div className="History-item" key={item._id}>
                          ${item.value} {item.month} {item.year}
+                         <button onClick={() => handleDelete(item._id)}>Delete</button>
                     </div>
                 ))}
             </div>
