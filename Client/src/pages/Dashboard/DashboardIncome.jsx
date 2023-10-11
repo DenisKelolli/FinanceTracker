@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./DashBoardIncome.css";
+import "./DashboardIncome.css";
 import { BsGraphUp } from "react-icons/bs";
 
 const DashBoardIncome = () => {
