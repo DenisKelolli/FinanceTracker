@@ -11,7 +11,7 @@ const NetWorth = () => {
   useEffect(() => {
     const fetchTotals = async () => {
       try {
-        const assetsResponse = await axios.get('http://localhost:3000/assets');
+        const assetsResponse = await axios.get(`${import.meta.env.VITE_API}/assets`);
         let assetsSum = 0;
         if (assetsResponse.data && Array.isArray(assetsResponse.data)) {
           assetsResponse.data.forEach(category => {
@@ -26,7 +26,7 @@ const NetWorth = () => {
           console.error("Unexpected structure for assets:", assetsResponse.data);
         }
     
-        const liabilitiesResponse = await axios.get('http://localhost:3000/liabilities');
+        const liabilitiesResponse = await axios.get(`${import.meta.env.VITE_API}/liabilities`);
         let liabilitiesSum = 0;
         if (liabilitiesResponse.data && Array.isArray(liabilitiesResponse.data)) {
           liabilitiesResponse.data.forEach(category => {

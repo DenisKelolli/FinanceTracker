@@ -17,7 +17,7 @@ const headers = [
     // Fetch all liabilities on component mount
     const fetchliabilities = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/liabilities');
+        const response = await axios.get(`${import.meta.env.VITE_API}/liabilities`);
         const liabilitiesData = {};
         response.data.forEach(liability => {
           liabilitiesData[liability.category] = liability.liability;
@@ -52,7 +52,7 @@ const headers = [
   const handleSubmit = async (header) => {
     if (formData[header]) {
       try {
-        await axios.post('http://localhost:3000/liabilities', {
+        await axios.post(`${import.meta.env.VITE_API}/liabilities`, {
           category: header,
           liabilityTitle: formData[header].text,
           liabilityValue: Number(formData[header].value)
@@ -82,9 +82,9 @@ const headers = [
   
   const handleEditSubmit = async () => {
     try {
-      await axios.put(`http://localhost:3000/liabilities`, {
+      await axios.put(`${import.meta.env.VITE_API}/liabilities`, {
         category: editMode.category,
-        liabilityId: editMode.liabilityId,  // Using liability's unique ID
+        liabilityId: editMode.liabilityId,  
         liabilityValue: Number(editMode.value)
       });
       console.log('liability edited successfully');
@@ -97,10 +97,10 @@ const headers = [
   
   const handleDeleteliability = async (header, liability) => {
     try {
-      await axios.delete(`http://localhost:3000/liabilities`, {
+      await axios.delete(`${import.meta.env.VITE_API}/liabilities`, {
         data: {
           category: header,
-          liabilityId: liability._id  // Using liability's unique ID
+          liabilityId: liability._id  
         }
       });
       console.log('liability deleted successfully');

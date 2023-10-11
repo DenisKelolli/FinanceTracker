@@ -17,7 +17,7 @@ const headers = [
     // Fetch all income on component mount
     const fetchincome = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/income');
+        const response = await axios.get(`${import.meta.env.VITE_API}/income`);
         const incomeData = {};
         response.data.forEach(income => {
           incomeData[income.category] = income.income;
@@ -52,7 +52,7 @@ const headers = [
   const handleSubmit = async (header) => {
     if (formData[header]) {
       try {
-        await axios.post('http://localhost:3000/income', {
+        await axios.post(`${import.meta.env.VITE_API}/income`, {
           category: header,
           incomeTitle: formData[header].text,
           incomeValue: Number(formData[header].value)
@@ -74,17 +74,15 @@ const headers = [
     });
 };
 
-  
-  
   const handleEditChange = (value) => {
     setEditMode(prevState => ({ ...prevState, value: value }));
   };
   
   const handleEditSubmit = async () => {
     try {
-      await axios.put(`http://localhost:3000/income`, {
+      await axios.put(`${import.meta.env.VITE_API}/income`, {
         category: editMode.category,
-        incomeId: editMode.incomeId,  // Using income's unique ID
+        incomeId: editMode.incomeId,  
         incomeValue: Number(editMode.value)
       });
       console.log('income edited successfully');
@@ -97,10 +95,10 @@ const headers = [
   
   const handleDeleteincome = async (header, income) => {
     try {
-      await axios.delete(`http://localhost:3000/income`, {
+      await axios.delete(`${import.meta.env.VITE_API}/income`, {
         data: {
           category: header,
-          incomeId: income._id  // Using income's unique ID
+          incomeId: income._id 
         }
       });
       console.log('income deleted successfully');
@@ -215,7 +213,6 @@ const pieOptions = {
   </div>
 ))}
 
-          
           {formData[header] && (
             <div className="income-input-container">
               <input 

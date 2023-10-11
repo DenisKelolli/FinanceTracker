@@ -9,7 +9,7 @@ const DashboardExpenses = () => {
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const expensesResponse = await axios.get('http://localhost:3000/expenses');
+        const expensesResponse = await axios.get(`${import.meta.env.VITE_API}/expenses`);
         
         let expensesSum = 0;
         if (expensesResponse.data && Array.isArray(expensesResponse.data)) {

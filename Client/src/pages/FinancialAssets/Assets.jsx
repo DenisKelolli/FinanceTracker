@@ -6,9 +6,6 @@ import { Chart, ArcElement, CategoryScale, PieController, Legend, Title } from '
 
 Chart.register(ArcElement, CategoryScale, PieController, Legend, Title);
 
-
-
-
 const headers = [
   'Real Estate', 'Vehicles', 'Stocks', 'Retirement', 'Cash', 'Personal Assets'
 ];
@@ -24,7 +21,7 @@ const Assets = () => {
     // Fetch all assets on component mount
     const fetchAssets = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/assets');
+        const response = await axios.get(`${import.meta.env.VITE_API}/assets`);
         const assetsData = {};
         response.data.forEach(asset => {
           assetsData[asset.category] = asset.asset;
@@ -59,7 +56,7 @@ const Assets = () => {
   const handleSubmit = async (header) => {
     if (formData[header]) {
       try {
-        await axios.post('http://localhost:3000/assets', {
+        await axios.post(`${import.meta.env.VITE_API}/assets`, {
           category: header,
           assetTitle: formData[header].text,
           assetValue: Number(formData[header].value)
@@ -89,7 +86,7 @@ const Assets = () => {
   
   const handleEditSubmit = async () => {
     try {
-      await axios.put(`http://localhost:3000/assets`, {
+      await axios.put(`${import.meta.env.VITE_API}/assets`, {
         category: editMode.category,
         assetId: editMode.assetId,  // Using asset's unique ID
         assetValue: Number(editMode.value)
@@ -104,7 +101,7 @@ const Assets = () => {
   
   const handleDeleteAsset = async (header, asset) => {
     try {
-      await axios.delete(`http://localhost:3000/assets`, {
+      await axios.delete(`${import.meta.env.VITE_API}/assets`, {
         data: {
           category: header,
           assetId: asset._id  // Using asset's unique ID

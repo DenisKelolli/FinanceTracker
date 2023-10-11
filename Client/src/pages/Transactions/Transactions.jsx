@@ -35,7 +35,7 @@ const Transactions = () => {
             // Use the provided date and attach the current time to it
             const localIsoString = new Date(date + "T" + timeString).toISOString();
     
-            await axios.post('http://localhost:3000/transactions', {
+            await axios.post(`${import.meta.env.VITE_API}/transactions`, {
                 transactionName,
                 type,
                 date: localIsoString,
@@ -50,7 +50,7 @@ const Transactions = () => {
 
     const fetchTransactions = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/transactions');
+            const response = await axios.get(`${import.meta.env.VITE_API}/transactions`);
             setAllTransactions(response.data);
         } catch (error) {
             console.error("Error fetching transactions:", error);

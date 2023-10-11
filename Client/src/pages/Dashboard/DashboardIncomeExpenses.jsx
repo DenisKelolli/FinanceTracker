@@ -13,7 +13,7 @@ const DashboardIncomeExpenses = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('http://localhost:3000/history');
+        const response = await axios.get(`${import.meta.env.VITE_API}/history`);
         if (response.data && response.data.income && response.data.expenses) {
           setIncomeData(response.data.income);
           setExpensesData(response.data.expenses);

@@ -9,7 +9,7 @@ const DashBoardIncome = () => {
   useEffect(() => {
     const fetchIncome = async () => {
         try {
-          const incomeResponse = await axios.get('http://localhost:3000/income');
+          const incomeResponse = await axios.get(`${import.meta.env.VITE_API}/income`);
           
           let incomeSum = 0;
           if (incomeResponse.data && Array.isArray(incomeResponse.data)) {

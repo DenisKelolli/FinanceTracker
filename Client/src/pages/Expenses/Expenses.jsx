@@ -18,7 +18,7 @@ const Expenses = () => {
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/expenses');
+        const response = await axios.get(`${import.meta.env.VITE_API}/expenses`);
         const expensesData = {};
         response.data.forEach(expense => {
           expensesData[expense.category] = expense.expenses;
@@ -53,7 +53,7 @@ const Expenses = () => {
   const handleSubmit = async (header) => {
     if (formData[header]) {
       try {
-        await axios.post('http://localhost:3000/expenses', {
+        await axios.post(`${import.meta.env.VITE_API}/expenses`, {
           category: header,
           expenseTitle: formData[header].text,
           expenseValue: Number(formData[header].value)
@@ -81,7 +81,7 @@ const Expenses = () => {
 
   const handleEditSubmit = async () => {
     try {
-      await axios.put(`http://localhost:3000/expenses`, {
+      await axios.put(`${import.meta.env.VITE_API}/expenses`, {
         category: editMode.category,
         expenseId: editMode.expenseId,
         expenseValue: Number(editMode.value)
@@ -95,7 +95,7 @@ const Expenses = () => {
 
   const handleDeleteExpense = async (header, expense) => {
     try {
-      await axios.delete(`http://localhost:3000/expenses`, {
+      await axios.delete(`${import.meta.env.VITE_API}/expenses`, {
         data: {
           category: header,
           expenseId: expense._id

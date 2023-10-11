@@ -13,7 +13,7 @@ const History = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await axios.get('http://localhost:3000/history');
+            const response = await axios.get(`${import.meta.env.VITE_API}/history`);
             const sortedData = {
                 income: response.data.income.sort((a, b) => b.year - a.year || monthsOrder.indexOf(b.month) - monthsOrder.indexOf(a.month)),
                 expenses: response.data.expenses.sort((a, b) => b.year - a.year || monthsOrder.indexOf(b.month) - monthsOrder.indexOf(a.month)),
@@ -30,14 +30,14 @@ const History = () => {
             return;
         }
         const data = { type, value: parseFloat(value), month, year };
-        const response = await axios.post('http://localhost:3000/history', data);
+        const response = await axios.post(`${import.meta.env.VITE_API}/history`, data);
         setHistories(response.data);
         window.location.reload();
     };
 
 
     const handleDelete = async (id) => {
-            await axios.delete(`http://localhost:3000/history/${id}`);
+            await axios.delete(`${import.meta.env.VITE_API}/history/${id}`);
             window.location.reload();
     };
     
