@@ -1,18 +1,15 @@
 .assets-container {
   margin: 10px;
-  width: 100%; /* Change for full width */
-  max-width: 600px; /* Limit the width to 600px on larger screens */
+  width: 600px;
 }
 
 .assets-section {
-  width: 100%;
+  width: 400px;
   flex: 1;
   border: 1px solid #e1e1e1;
   padding: 20px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   background-color: white;
-  overflow-y: auto;
-  max-height: 500px;
 }
 
 .asset-item {
@@ -22,8 +19,6 @@
   padding-left: 10px;
   padding-bottom: 5px;
   font-size: 20px;
-  border-bottom: 1px solid #e1e1e1;
-  margin-bottom: 5px;
 }
 
 .asset-action-buttons {
@@ -63,7 +58,6 @@ input[type="number"] {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%; /* Adjust for mobile screens */
 }
 
 .assets-submit {
@@ -75,8 +69,6 @@ input[type="number"] {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
-  display: block; /* Adjust for mobile screens */
-  width: 100%;
 }
 
 .assets-submit:hover {
@@ -85,14 +77,12 @@ input[type="number"] {
 
 .assetsandpiecontainer {
   display: flex;
-  gap: 20px;
-  flex-direction: column; /* Stacks sections on top of each other for mobile screens */
+  margin: 20px;
 }
 
 .assets-pie-section {
   height: 500px;
-  width: 100%;
-  max-width: 600px;
+  width: 600px;
 }
 
 .assets-edit-button {
@@ -118,9 +108,33 @@ input[type="number"] {
   font-size: 20px;
 }
 
-
-@media screen and (min-width: 600px) {
+@media only screen and (max-width: 1200px) {
   .assetsandpiecontainer {
-    flex-direction: row;
+    margin-top: 100px;
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .assetsandpiecontainer {
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    margin-top: 50px;
+    width: 100%;
+  }
+
+  .assets-container {
+    width: 100%;
+  }
+
+  .assets-section {
+    width: 90%;
+  }
+
+  .assets-pie-section {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
   }
 }

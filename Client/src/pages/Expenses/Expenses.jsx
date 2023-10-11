@@ -231,7 +231,6 @@ const Expenses = () => {
             </div>
         </div>
         <div className="expenses-pie-section">
-            <h3>Monthly Expenses</h3>
             <Pie data={getPieData()} options={pieOptions} />
         </div>
     </div>

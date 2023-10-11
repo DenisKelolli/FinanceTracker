@@ -1,122 +1,131 @@
 .expenses-container {
-    margin: 10px;
-    width: 600px;
-    }
-    
-    .expenses-section {
-      width: 400px;
-      flex: 1;
-      border: 1px solid #e1e1e1;
-      padding: 20px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-      background-color: white;
-    }
-  
-    .expenses-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-left: 10px;
-      padding-bottom: 5px;
-      font-size: 20px;
-    }
-  
-    .expenses-action-buttons {
-      display: flex;
-      gap: 10px; /* to provide space between buttons */
-    }
-    
-    
-    
-    h3 {
-      text-align: left;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgb(60, 57, 57);
-      font-size: 24px;
-    }
-    
-    .expenses-add-icon,
-  .expenses-remove-icon {
-    margin-left: 10px;
-    cursor: pointer;
-    color: #007bff;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    margin-bottom: 3px;
+  margin: 10px;
+  width: 600px;
+}
+
+.expenses-section {
+  width: 400px;
+  flex: 1;
+  border: 1px solid #e1e1e1;
+  padding: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.expenses-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  font-size: 20px;
+}
+
+.expenses-action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.expenses-add-icon,
+.expenses-remove-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #007bff;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  margin-bottom: 3px;
+}
+
+.expenses-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input[type="text"], 
+input[type="number"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.expenses-submit {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.expenses-submit:hover {
+  background-color: #0056b3;
+}
+
+.expenses-and-pie-container {
+  display: flex;
+  margin: 20px;
+}
+
+.expenses-pie-section {
+  height: 500px;
+  width: 600px;
+}
+
+.expenses-edit-button {
+  background-color: #36A2EB;
+  border: 1px solid white;
+  padding: 3px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.expenses-delete-button {
+  background-color: #4BC0C0;
+  border: 1px solid white;
+  padding: 3px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.expenses-item-total {
+  padding-left: 10px;
+  padding-bottom: 5px;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .expenses-and-pie-container {
+    margin-top: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
-    
-    .expenses-input-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    
-    input[type="text"], 
-    input[type="number"] {
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    
-    .expenses-submit {
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    
-    .expenses-submit:hover {
-      background-color: #0056b3;
-    }
-  
-  .expensesandpiecontainer{
-   display: flex;
-  }
-  
-  .expenses-pie-section{
-    height: 500px;
-    width: 600px;
-  }
-  
-  .expenses-edit-button{
-   background-color: #36A2EB;
-   border: 1px solid white;
-   padding: 3px 10px;
-   margin-left: 10px;
-   cursor: pointer;
-   border-radius: 4px;
-  }
-  
-  .expenses-delete-button{
-   background-color: #4BC0C0;
-   border: 1px solid white;
-   padding: 3px 10px;
-   cursor: pointer;
-   border-radius: 4px;
-  }
-  
-  .expenses-total{
-    width: 400px;
-      flex: 1;
-      border: 1px solid #e1e1e1;
-      padding: 20px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-      background-color: white;
-      padding-left: 10px;
-    padding-bottom: 5px;
-    font-size: 20px;
+}
+
+@media (max-width: 600px) {
+  .expenses-and-pie-container {
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    margin-top: 50px;
+    width: 100%;
   }
 
-  .expenses-item-total{
-    padding-left: 10px;
-    padding-bottom: 5px;
-    font-size: 20px;
+  .expenses-container {
+    width: 100%;
   }
+
+  .expenses-section {
+    width: 90%;
+  }
+
+  .expenses-pie-section {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+}

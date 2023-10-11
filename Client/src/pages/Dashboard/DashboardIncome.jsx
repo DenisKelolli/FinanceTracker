@@ -45,7 +45,7 @@ const DashBoardIncome = () => {
         <div className="DashBoardIncome-icon-left"> <BsGraphUp size={"30px"}  /></div>
       </div>
       <div className="DashBoardIncome-row">
-        <div className="DashBoardIncome-title">Monthly Income</div>
+        <div className="DashBoardIncome-title">Monthly Gross Income</div>
       </div>
       <div className="DashBoardIncome-row">
         <span className="DashBoardIncome-value">${formatNumber(incomeTotal.toFixed(2))}</span>

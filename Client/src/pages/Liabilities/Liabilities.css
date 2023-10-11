@@ -23,10 +23,8 @@
 
   .liability-action-buttons {
     display: flex;
-    gap: 10px; /* to provide space between buttons */
+    gap: 10px; 
   }
-  
-  
   
   h3 {
     text-align: left;
@@ -79,6 +77,7 @@
 
 .liabilitiesandpiecontainer{
  display: flex;
+ margin: 20px;
 }
 
 .liabilities-pie-section{
@@ -109,4 +108,34 @@
   font-size: 20px;
 }
 
+@media only screen and (max-width: 1200px) {
+  .liabilitiesandpiecontainer {
+      margin-top: 100px;
+      margin-left: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .liabilitiesandpiecontainer {
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    margin-top: 50px;
+    width: 100%;
+  }
+
+  .liabilities-container {
+    width: 100%;
+  }
+
+  .liabilities-section {
+    width: 90%;
+  }
+
+  .liabilities-pie-section {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+}
 

@@ -24,7 +24,7 @@
     overflow-x: auto;
 }
 
-/* Style for smaller screens */
+
 @media (max-width: 600px) {
     .recent-transactions-container {
         margin-left: 20px;
@@ -36,15 +36,11 @@
     .recenttransactions-td {
         font-size: 16px;
     }
-    /* Set rows to display as flex containers */
     .transactions-table tr {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 20px;  /* Separate each "row" */
-        border: 1px solid #e1e1e1;  /* Optional: Add border around each "row" for clarity */
-        padding: 10px;  /* Some padding around the "row" */
+       
+        margin-bottom: 20px; 
+        border: 1px solid #e1e1e1; 
+        padding: 10px; 
     }
-    .transactions-table thead {
-        display: none;  /* Hide the table headers as they're not needed in this view */
-    }
+   
 }

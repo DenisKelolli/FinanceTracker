@@ -1,9 +1,12 @@
 .transactions-container {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
   font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
+  max-width: 800px;
+  margin: 40px auto;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 90%;
 }
 
 .transactions-form-container {
@@ -20,6 +23,12 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  font-size: 16px;
+}
+
+.transactions-addtransaction-button{
+  display: flex;
+  justify-content: center;
 }
 
 .transactions-button {
@@ -27,6 +36,7 @@
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 20%;
 }
 
 .transactions-button:hover {
@@ -54,3 +64,61 @@ th, td {
 th {
   background-color: #f2f2f2;
 }
+
+.transactions-table, .transactions-th, .transactions-td {
+  border: 1px solid #ddd;
+  background-color: white;
+}
+
+.transactions-th, .transactions-td {
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.transactions-th {
+  background-color: #f2f2f2;
+}
+
+
+@media (max-width: 1200px) {
+
+  .transactions-container{
+   margin-top: 70px;
+   margin-left: 20px;
+   margin-right: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .transactions-container{
+   margin-top: 70px;
+   margin-left: 20px;
+   margin-right: 20px;
+  }
+
+  .transactions-input, .transactions-select, .transactions-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .transactions-button {
+    width: auto;
+  }
+
+  .transactions-filters {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .transactions-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .transactions-th, .transactions-td {
+    padding: 5px;
+  }
+}
+

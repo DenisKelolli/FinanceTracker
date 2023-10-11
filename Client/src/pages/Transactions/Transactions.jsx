@@ -101,7 +101,7 @@ const Transactions = () => {
                             setType(e.target.value);
                             setTypeError(!e.target.value);
                         }}>
-                            <option value="" disabled>Select type</option>
+                            <option value="" disabled>Select Type</option>
                             <option value="Income">Income</option>
                             <option value="Expense">Expense</option>
                         </select>
@@ -129,9 +129,11 @@ const Transactions = () => {
                         />
                         {amountError && <span style={{color: 'red'}}>Amount can't be blank</span>}
                     </div>
-                    <button className="transactions-button" type="button" onClick={handleSubmit}>
-                        Add Transaction
-                    </button>
+                    <div className="transactions-addtransaction-button">
+                        <button className="transactions-button" type="button" onClick={handleSubmit}>
+                            Add Transaction
+                        </button>
+                    </div>
                 </form>
             </div>
     
@@ -161,20 +163,20 @@ const Transactions = () => {
             <div className="transactions-table-container">
                 <table className="transactions-table">
                     <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Date</th>
-                            <th>Amount</th>
+                        <tr className="transactions-tr">
+                            <th className="transactions-th">Name</th>
+                            <th className="transactions-th">Type</th>
+                            <th className="transactions-th">Date</th>
+                            <th className="transactions-th">Amount</th>
                         </tr>
                     </thead>
                     <tbody>
                         {filteredTransactions.map((transaction, index) => (
-                            <tr key={index}>
-                                <td>{transaction.transactionName}</td>
-                                <td>{transaction.type}</td>
-                                <td>{new Date(transaction.date).toLocaleDateString()}</td>
-                                <td style={{
+                            <tr key={index} className="transactions-tr">
+                                <td className="transactions-td">{transaction.transactionName}</td>
+                                <td className="transactions-td">{transaction.type}</td>
+                                <td className="transactions-td">{new Date(transaction.date).toLocaleDateString()}</td>
+                                <td className="transactions-td" style={{
                                     color: transaction.type === 'Expense' ? 'red' : 'green'
                                 }}>
                                     {transaction.type === 'Expense' 

@@ -237,11 +237,10 @@ const pieOptions = {
       ))}
         <div className="liabilities-section">
                 <h3>Total Liabilities</h3>
-                <div className='liability-item-total'>${computeTotal()}</div>
+                <div className='liability-item-total'>${computeTotal().toFixed(2)}</div>
             </div>
     </div>
     <div className="liabilities-pie-section">
-                <h3>Pie Chart of Liabilities</h3>
                 <Pie data={getPieData()} options={pieOptions} />
                 
             </div> 

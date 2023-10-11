@@ -52,7 +52,7 @@ const History = () => {
                     placeholder="Value" 
                 />
                 <select className="History-select" value={type} onChange={(e) => setType(e.target.value)}>
-                    <option value="Type">Type</option>
+                    <option value="Type">Select Type</option>
                     <option value="Income">Income</option>
                     <option value="Expenses">Expenses</option>
                 </select>
@@ -68,7 +68,9 @@ const History = () => {
                         <option key={i} value={2020 + i}>{2020 + i}</option>
                     ))}
                 </select>
-                <button className="History-button" type="submit">Submit</button>
+                <div className="history-submitbutton">
+                    <button className="History-button" type="submit">Submit</button>
+                </div>
             </form>
 
             <div className="History-list">

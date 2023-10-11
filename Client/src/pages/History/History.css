@@ -6,6 +6,7 @@
     margin: 40px auto;
     border-radius: 5px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
 }
 
 .History-form {
@@ -31,11 +32,19 @@
     margin-right: 1.5%;
 }
 
+.history-submitbutton {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
 .History-button {
     background-color: #007BFF;
     color: white;
     cursor: pointer;
     transition: background-color 0.2s;
+    width: 20%;
 }
 
 .History-button:hover {
@@ -60,7 +69,6 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-
 .History-item button {
     margin-left: 10px;
     padding: 5px 10px;
@@ -79,12 +87,42 @@
     outline: none;
 }
 
-.History-item button:nth-child(2) {
-    background-color: #4CAF50;  /* Edit button in green */
+.History-item button:nth-child(1) {
+    background-color: #4BC0C0;
     color: white;
 }
 
-.History-item button:nth-child(3) {
-    background-color: #f44336;  /* Delete button in red */
-    color: white;
+@media (max-width: 1200px) {
+    .History-container{
+        margin-top: 70px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+}
+
+@media (max-width: 600px) {
+    .History-container{
+        margin-top: 70px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    .History-form {
+        flex-direction: column;
+    }
+    
+    .History-input, 
+    .History-select {
+        width: 80%;
+        margin-right: 0;
+    }
+
+    .History-button {
+        width: 100%;
+    }
+
+    .History-item button {
+        font-size: 12px;
+    }
 }

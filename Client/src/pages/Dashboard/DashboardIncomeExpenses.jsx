@@ -40,13 +40,14 @@ const DashboardIncomeExpenses = () => {
   const maxIncome = Math.max(...incomeMonthlySum);
   const maxExpense = Math.max(...expensesMonthlySum);
   const maxChartValue = 1.4 * Math.max(maxIncome, maxExpense);
+  const roundedMaxChartValue = Math.floor(maxChartValue / 100) * 100;
   
 
   const chartData = {
     labels: monthsOrder,
     datasets: [
       {
-        label: 'Income',
+        label: 'Gross Income',
         data: incomeMonthlySum,
         backgroundColor: 'rgba(75, 192, 192, 0.6)',
         borderColor: 'rgba(75, 192, 192, 1)',
@@ -67,7 +68,7 @@ const DashboardIncomeExpenses = () => {
     scales: {
       y: {
         beginAtZero: true,
-        max: maxChartValue,
+        max: roundedMaxChartValue,
         ticks: {
           callback: (value) => `$${value}`,
         }

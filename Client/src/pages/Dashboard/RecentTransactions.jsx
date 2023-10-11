@@ -31,7 +31,7 @@ const RecentTransactions = () => {
             <h2>Recent Transactions</h2>
             <table className="transactions-table">
                 <thead>
-                    <tr>
+                    <tr >
                         <th className='recenttransactions-th'>Name</th>
                         <th className='recenttransactions-th' >Type</th>
                         <th className='recenttransactions-th'>Date</th>
