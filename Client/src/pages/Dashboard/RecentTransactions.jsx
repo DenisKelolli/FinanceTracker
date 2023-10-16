@@ -8,7 +8,7 @@ const RecentTransactions = () => {
     useEffect(() => {
         const fetchRecentTransactions = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/transactions');
+                const response = await axios.get(`${import.meta.env.VITE_API}/transactions`);
         
                 // Sort transactions by date in descending order
                 const sortedTransactions = response.data.sort((a, b) => new Date(b.date) - new Date(a.date));
