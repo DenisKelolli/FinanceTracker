@@ -10,6 +10,8 @@
   padding: 20px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   background-color: white;
+  margin-bottom: 2px;
+  border-radius: 5px;
 }
 
 .asset-item {
@@ -117,24 +119,35 @@ input[type="number"] {
 
 @media (max-width: 600px) {
   .assetsandpiecontainer {
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-    margin-top: 50px;
-    width: 100%;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-top: 60px;
+      width: calc(100% - 40px); 
+      box-sizing: border-box; 
+  }
+
+  .assets-container, .assets-section, .assets-pie-section {
+      box-sizing: border-box; 
   }
 
   .assets-container {
-    width: 100%;
+      width: 100%;
+      padding: 0; 
   }
 
   .assets-section {
-    width: 90%;
+      width: calc(100% - 10px); 
+      max-width: 600px;
+      margin: 0 auto; 
   }
 
   .assets-pie-section {
-    width: 100%;
-    height: auto;
-    margin-bottom: 20px;
+      width: calc(100% - 10px); 
+      max-width: 600px;
+      height: auto;
+      margin-bottom: 20px;
+      margin: 0 auto; 
   }
 }

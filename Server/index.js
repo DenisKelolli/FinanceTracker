@@ -3,20 +3,19 @@ const mongoose = require('mongoose');
 const cors = require("cors");
 require("dotenv").config();
 const app = express();
-const port = "3000";
 const Assets = require("./models/assets");
 const Liabilities = require("./models/liabilities");
 const Incomes = require("./models/incomes");
 const Transactions = require("./models/transactions");
 const Expenses = require("./models/expenses");
 const Histories = require("./models/history");
-
-
+// const port = "3000";
+const serverless = require("serverless-http");
 
 //Middleware
 app.use(express.json());
 app.use(cors({
-    origin: "http://localhost:5173"
+    origin: "https://financeclient.d3bewrwgtfjpy.amplifyapp.com"
   }));
 
   // GET request handler for /assets route
@@ -71,10 +70,6 @@ app.delete('/assets', async (req, res) => {
     res.status(500).json({ success: false, message: "Server Error.", error: error.message });
   }
 });
-
-
-
-
 
 // POST request handler for /assets route
 app.post('/assets', async (req, res) => {
@@ -161,7 +156,6 @@ app.delete('/liabilities', async (req, res) => {
 });
 
 
-
 app.post('/liabilities', async (req, res) => {
   try {
       // Extract data from the request body
@@ -243,8 +237,6 @@ app.delete('/income', async (req, res) => {
     res.status(500).json({ success: false, message: "Server Error.", error: error.message });
   }
 });
-
-
 
 
 app.post('/income', async (req, res) => {
@@ -367,8 +359,6 @@ app.post('/expenses', async (req, res) => {
 });
 
 
-
-
 app.get('/transactions', async (req, res) => {
   try {
     const transactions = await Transactions.find().sort({date: -1}); // Sorting in descending order based on date-time
@@ -415,9 +405,9 @@ app.delete('/history/:id', async (req, res) => {
   const start = async () => {
     try {
       await mongoose.connect(process.env.MONGO_CONNECTION_STRING);
-      app.listen(port, () => {
-        console.log(`Server is running on port ${port}`);
-      });
+      // app.listen(port, () => {
+      //   console.log(`Server is running on port ${port}`);
+      // });
     } catch (e) {
       console.log(e.message);
     }
@@ -425,3 +415,5 @@ app.delete('/history/:id', async (req, res) => {
   
   
   start();
+
+  module.exports.handler = serverless(app);
