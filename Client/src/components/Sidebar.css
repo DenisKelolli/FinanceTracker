@@ -55,6 +55,7 @@
         height: 100%;
         z-index: 1000;
         transition: left 0.3s;
+        
     }
 
     .sidebar-container.show {
@@ -64,10 +65,10 @@
     .hamburger {
         display: block;
         background-color:rgb(114, 163, 228);;
-        
         border-radius: 2px;
         padding-left: 3px;
         padding-right: 3px;
         padding-top: 3px;
+        margin-right: 10px;
     }
 }
